@@ -13,7 +13,7 @@ public class Links {
 
     public static String LOGINVIEW = "/login/loginView.fxml";
     
-    public static String DASHBOARD = "/dashboard/FXML.fxml";
+    public static String DASHBOARD = "/dashboard/dashboardView.fxml";
 
     public static String PROFILEIMAGE = "/images/myImage.jpg";
 
