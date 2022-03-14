@@ -7,11 +7,15 @@ package dashboard;
 
 import com.jfoenix.controls.JFXButton;
 import helpres.Links;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.TranslateTransition;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -74,6 +78,17 @@ public class DashboardViewController implements Initializable {
     int countNotif;
     @FXML
     private VBox anchor;
+    @FXML
+    private AnchorPane anchorMenuItems;
+    @FXML
+    private JFXButton removeItemsView;
+    @FXML
+    private JFXButton employeesBtn;
+
+    boolean anchorMenuActive;
+    int countAnchorMenu;
+    @FXML
+    private VBox ItemsVbox;
 
     /**
      * Initializes the controller class.
@@ -84,10 +99,15 @@ public class DashboardViewController implements Initializable {
         Image image = new Image(Links.PROFILEIMAGE);
         circle.setFill(new ImagePattern(image));
         slideTransition(slideAnchor, 420, 0.1);
+        slideTransition(anchorMenuItems, 1020, 0.1);
+
         menuIsActive = false;
         notificationsIsActive = false;
         countMenu = 1;
         countNotif = 1;
+        anchorMenuActive = false;
+        countAnchorMenu = 1;
+
         menuBtn.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -131,6 +151,7 @@ public class DashboardViewController implements Initializable {
             public void handle(MouseEvent event) {
                 countMenu++;
                 countNotif++;
+                countAnchorMenu++;
                 if (notificationsIsActive = true && countNotif == 1) {
                     slideTransition(notificationsSlide, 420, 400);
                     notificationsIsActive = false;
@@ -139,6 +160,10 @@ public class DashboardViewController implements Initializable {
                     slideTransition(menuSlide, 420, 400);
                     menuIsActive = false;
 
+                }
+                if (anchorMenuActive = true && countAnchorMenu == 1) {
+                    slideTransition(anchorMenuItems, 1020, 400);
+                    anchorMenuActive = false;
                 }
                 anchor.setStyle("-fx-background-color:#202940;-fx-opacity:1;");
             }
@@ -185,6 +210,17 @@ public class DashboardViewController implements Initializable {
 
             }
         });
+        employeesBtn.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                loadViews(Links.EMPLOYEESSVIEW);
+                slideTransition(anchorMenuItems, -1020, 400);
+                anchorMenuActive = true;
+                countAnchorMenu = 0;
+                anchor.setStyle("-fx-background-color:#06080D;-fx-opacity:.4;");
+                
+            }
+        });
 
     }
 
@@ -209,4 +245,15 @@ public class DashboardViewController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setMaximized(true);
     }
+
+    private void loadViews(String viewName) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(viewName));
+            ItemsVbox.getChildren().setAll(pane);
+        } catch (IOException ex) {
+            Logger.getLogger(DashboardViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
 }
