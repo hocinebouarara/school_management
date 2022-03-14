@@ -15,7 +15,7 @@
 }
 
 .btn:hover {
-    -fx-background-color: #495057;
+    -fx-background-color: #2B3345;
     -fx-scale-x: 1.08;
     -fx-scale-y: 1.08;
 
@@ -29,7 +29,7 @@
     -fx-background-color: transparent;
 }
 .close:hover {
-    -fx-background-color: #495057;
+    -fx-background-color: #2B3345;
 }
 #close:hover {
     -fx-background-color: rgba(255,0,0,0.7);
@@ -108,13 +108,3 @@
 .scroll-pane > .viewport {
     -fx-background-color: transparent;
 }
-
-.leftAnchor {
-    -fx-view-order:12;
-
-}
-.centerAnchor {
-    -fx-view-order:10;
-
-}
-
