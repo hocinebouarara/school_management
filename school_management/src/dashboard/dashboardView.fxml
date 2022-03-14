@@ -519,11 +519,7 @@
                         </JFXButton>
                      </children>
                   </HBox>
-                  <VBox fx:id="ItemsVbox" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-                     <padding>
-                        <Insets left="50.0" />
-                     </padding>
-                  </VBox>
+                  <VBox fx:id="ItemsVbox" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
          </children>
