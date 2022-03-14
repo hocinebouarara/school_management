@@ -16,5 +16,7 @@ public class Links {
     public static String DASHBOARD = "/dashboard/dashboardView.fxml";
 
     public static String PROFILEIMAGE = "/images/myImage.jpg";
+    
+    public static String EMPLOYEESSVIEW = "/employees/employeesView.fxml";
 
 }
