@@ -107,6 +107,10 @@ public class Employee {
         this.password = password;
     }
     
+    public static EmployeeBuilder builder(){
+        return new EmployeeBuilder();
+    }
+    
     
     @Override
     public String toString() {
