@@ -15,6 +15,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import models.Employee;
 
 /**
@@ -24,12 +26,14 @@ import models.Employee;
 public class EmployeeDaoImp implements EmployeeDao {
     
     @Override
-    public List<Employee> findAll() {
+    public ObservableList<Employee> findAll() {
         Connection connection = DbConnect.getConnect();
         if (connection == null) {
             return null;
         }
-        List<Employee> employees = new LinkedList<>();
+       // List<Employee> employees = new LinkedList<>();
+        ObservableList<Employee> employeesList = FXCollections.observableArrayList();
+
         String query = "select * from employees;";
         
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -38,7 +42,7 @@ public class EmployeeDaoImp implements EmployeeDao {
                 Employee employee = new Employee(resultSet.getInt("id"), resultSet.getString("image"), resultSet.getString("fullname"), resultSet.getDate("birth"),
                         resultSet.getString("address"), resultSet.getString("phone"), resultSet.getString("type"), resultSet.getString("email"), resultSet.getString("password")
                 );
-                employees.add(employee);
+                employeesList.add(employee);
             }
             
         } catch (SQLException ex) {
@@ -51,7 +55,7 @@ public class EmployeeDaoImp implements EmployeeDao {
             }
         }
         
-        return employees;
+        return employeesList;
     }
     
     @Override

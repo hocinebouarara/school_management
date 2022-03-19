@@ -221,6 +221,17 @@ public class DashboardViewController implements Initializable {
                 
             }
         });
+        removeItemsView.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                loadViews(Links.EMPLOYEESSVIEW);
+                slideTransition(anchorMenuItems, 1020, 400);
+                anchorMenuActive = false;
+                countAnchorMenu = 1;
+                anchor.setStyle("-fx-background-color:#06080D;-fx-opacity:1;");
+                
+            }
+        });
 
     }
 

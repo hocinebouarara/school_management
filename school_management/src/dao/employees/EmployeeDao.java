@@ -6,6 +6,7 @@
 package dao.employees;
 
 import java.util.List;
+import javafx.collections.ObservableList;
 import models.Employee;
 
 /**
@@ -15,7 +16,7 @@ import models.Employee;
 public interface EmployeeDao {
     
     
-    List<Employee> findAll();
+    ObservableList<Employee> findAll();
     
     Employee findById(int id);
     
