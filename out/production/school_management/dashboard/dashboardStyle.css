@@ -1,0 +1,110 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.anchor {
+    -fx-background-color: #202940;
+}
+
+.btn {
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+}
+
+.btn:hover {
+    -fx-background-color: #2B3345;
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+
+}
+.btn:pressed {
+    -fx-scale-y: 0.97;
+    -fx-scale-x: 0.97;
+}
+.close{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+}
+.close:hover {
+    -fx-background-color: #2B3345;
+}
+#close:hover {
+    -fx-background-color: rgba(255,0,0,0.7);
+}
+.sign {
+    -fx-background-color: #018934;
+    -fx-cursor: hand;
+}
+.sign:hover {
+    -fx-scale-x: 1.08; 
+    -fx-scale-y: 1.08;
+}
+.sign:pressed {
+    -fx-scale-y: 0.97;
+    -fx-scale-x: 0.97;
+}
+.scroll-pane {
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-padding: 0;
+}
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-background-radius:0px;
+
+}
+.scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0px;
+    -fx-border-radius: 2em;
+}
+.scroll-pane .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-radius: 0em;
+    -fx-padding: 0 0 10 0 ;
+}
+.scroll-pane .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-radius: 0em;
+    -fx-padding: 0 18 0 0 ;
+}
+.scroll-pane .scroll-bar .increment-arrow,
+.scroll-pane .scroll-bar .decrement-arrow {
+    -fx-padding: -2;
+}
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #31394F;
+    -fx-background-insets: 2,0,0;
+    -fx-cursor: hand;
+}
+.scroll-pane .scroll-bar .thumb:hover {
+    -fx-background-color: #45547d;
+
+}
+
+/* notification style  */
+
+.notif-btn {
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 5px 0;
+    -fx-border-color: transparent;
+    -fx-border-radius: 0px;
+    -fx-background-radius:0px;
+
+
+
+}
+.notif-btn:hover {
+    -fx-background-color: #495057;
+    -fx-border-color: #018934;
+
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}

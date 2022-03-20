@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="mysql-connector-java-8.0.28">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/NetBeansProjects/libs/mysql-connector-java-8.0.28.jar!/" />
+      <root url="jar://$USER_HOME$/NetBeansProjects/libs/jfoenix-8.0.2.jar!/" />
+      <root url="jar://$USER_HOME$/NetBeansProjects/libs/fontawesomefx-8.9.jar!/" />
+      <root url="jar://$USER_HOME$/NetBeansProjects/libs/controlsfx-8.40.11.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
