@@ -85,23 +85,14 @@ public class EmployeesViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        connection = DbConnect.getConnect();
         refreshTable();
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        imageCol.setCellValueFactory(new PropertyValueFactory<>("image"));
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        birthCol.setCellValueFactory(new PropertyValueFactory<>("birth"));
-        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
-        phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
-        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
 
         //editableCols();
         // ManageCol.setCellValueFactory(new PropertyValueFactory("update"));
         // insert btn in every row
         Callback<TableColumn<Employee, String>, TableCell<Employee, String>> cellFoctory = (TableColumn<Employee, String> param) -> {
 
-            // make the tablecell containing buttons
+            // make the table cell containing buttons
             final TableCell<Employee, String> cell = new TableCell<Employee, String>() {
 
                 // Override updateItem method
@@ -134,19 +125,7 @@ public class EmployeesViewController implements Initializable {
 
                         deleteIcon.setOnMouseClicked((MouseEvent mouseEvent) -> {
 
-                            try {
 
-                                employee = employeesTabeView.getSelectionModel().getSelectedItem();
-                                connection = DbConnect.getConnect();
-                                query = "delete from article where idar =" + employee.getId();
-                                preparedStatement = connection.prepareCall(query);
-                                preparedStatement.execute();
-                                refreshTable();
-                                employee = null;
-
-                            } catch (SQLException ex) {
-                                Logger.getLogger(EmployeesViewController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
 
                         });
 
@@ -165,14 +144,14 @@ public class EmployeesViewController implements Initializable {
 //                            addProductController.setTextFields(product.getId(), product.getReference(), product.getDesignation(),
 //                                    product.getQuantity(), product.getCategory(), product.getBuyingPrice(),
 //                                    product.getSalePrice(), product.getTotalBuy(), product.getTotalSale());
-//                            
+//
 //                            addProductController.setUpdate(true);
 //                            Parent p = loader.getRoot();
 //                            Stage stage = new Stage();
 //                            stage.setScene(new Scene(p));
 //                            stage.initStyle(StageStyle.TRANSPARENT);
 //                            stage.show();
-//                            
+//
 
                         });
 
@@ -200,13 +179,6 @@ public class EmployeesViewController implements Initializable {
         add.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                EmployeeDao employeeDao = new EmployeeDaoImp();
-
-//                Employee employee = new Employee(2, "image", "abdo bouarara", new Date(), "lardjem", "0782702330", "employé", "abdobouarara@gmail.com", "rabah08");
-//                employeeDao.findAll().forEach(System.out::println);
-//                Employee e = employeeDao.findById(1);
-//                System.out.println(e);
-                employeeDao.deleteById(30);
 
             }
         });
@@ -216,39 +188,20 @@ public class EmployeesViewController implements Initializable {
     private void refreshTable() {
         employeesList.clear();
 
- 
-        
-        try {
-            query = "select * from employees";
-            preparedStatement = connection.prepareStatement(query);
-            resultSet = preparedStatement.executeQuery();
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        imageCol.setCellValueFactory(new PropertyValueFactory<>("image"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        birthCol.setCellValueFactory(new PropertyValueFactory<>("birth"));
+        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-            while (resultSet.next()) {
-                Image image = new Image(Links.PROFILEIMAGE);
-                Circle circle = new Circle();
-                circle.setFill(new ImagePattern(image));
-                System.out.println("link of image is :" + resultSet.getString(2));
-                employeesList.add(new Employee(
-                        resultSet.getInt("id"),
-                        resultSet.getString("image"),
-                        resultSet.getString("fullName"),
-                        resultSet.getDate("birth"),
-                        resultSet.getString("address"),
-                        resultSet.getString("phone"),
-                        resultSet.getString("type"),
-                        resultSet.getString("email"),
-                        resultSet.getString("password")
-                )
-                );
-                employeesTabeView.setItems(employeesList);
+        EmployeeDao employeeDao = new EmployeeDaoImp();
+        employeesList = employeeDao.findAll();
 
-            }
-            preparedStatement.close();
-            resultSet.close();
-        } catch (SQLException e) {
-            System.err.print(e);
+        employeesTabeView.setItems(employeesList);
 
-        }
     }
 
 }
